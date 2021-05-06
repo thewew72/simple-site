@@ -1,0 +1,35 @@
+{% extends "majorsite/base.html" %}
+
+{% block content %}
+
+<p>personalpage</p>
+
+<img src="{{ avatar }}" style="max-width:225px;">
+
+<p></p>
+
+{{ fname }}
+{{ lname }}
+
+<p></p>
+
+<form action="friend/add/{{page_owner.username}}/" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Добавить в друзья"/>
+</form>
+
+<form action="{% url 'postman:write' page_owner.username %}">
+    <input type="submit" value="Написать сообщение" />
+</form>
+
+<a href="{% url 'majorsite:create_post' %}">Создать пост</a>
+
+<ul>
+    {% for p in posts %}
+    <img src="{{p.image}}" style="max-width:570px;">
+    <li>{{p.content}}</li>
+    <hr>
+    {% endfor %}
+</ul>
+
+{% endblock %}

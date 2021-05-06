@@ -1,0 +1,30 @@
+{% extends "majorsite/base.html" %}
+
+{% load friendshiptags %}
+
+{% block content %}
+
+<ul>
+    {% for x in items %}
+    <li>
+        <a href="/id{{x.from_user.id}}">{{x.from_user.first_name}} {{x.from_user.last_name}}</a>
+        <form action="friend/accept/{{x.from_user.id}}/" method="post">
+            {% csrf_token %}
+            <button type="submit">Добавить в друзья</button>
+        </form>
+        <form action="friend/reject/{{x.from_user.id}}/" method="post">
+            {% csrf_token %}
+            <button type="submit">Отклонить заявку</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+
+
+{% block content-right %}
+
+{% include "majorsite/menu_friends.html" %}
+
+{% endblock %}

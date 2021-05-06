@@ -1,0 +1,12 @@
+{% extends "majorsite/base.html" %}
+
+{% block content %}
+
+<ul>
+    {% for u in users %}
+    <li>{{ u }}</li>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+
+<ul>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/id{{user.id}}">Моя страница</a></li>
+    <li><a href="/">Новости</a></li>
+    <li><a href="/messages/inbox/">Сообщения</a></li>
+    <li><a href="{% url 'majorsite:showfriends' %}">Друзья</a></li>
+    <li><a href="/audios{{user.id}}">Музыка</a></li>
+    <li><a href="{% url 'majorsite:all_users' %}">Список пользователей</a></li>
+    <li><a href="{% url 'majorsite:define_avatar' %}">Редактировать аватарку</a></li>
+</ul>

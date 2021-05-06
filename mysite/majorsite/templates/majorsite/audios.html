@@ -1,0 +1,16 @@
+{% extends "majorsite/base.html" %}
+
+{% block content %}
+
+<a href="{% url 'majorsite:audios_upload' %}">Загрузить аудиозапись</a>
+
+<hr>
+
+{% for x in audios %}
+<p>{{ x.audios.name }}</p>
+<audio controls>
+    <source src="{{ x.audios }}" type="audio/mpeg">
+</audio>
+{% endfor %}
+
+{% endblock %}

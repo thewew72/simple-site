@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ site_title }}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'majorsite/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'majorsite/style.css' %}">
+</head>
+<body>
+
+    <div class="container" id="cont-major">
+        <div class="row">
+        <div class="col" id="column-left">
+            <div id="column-left2">
+            {% include "majorsite/menu.html" %}
+            </div>
+        </div>
+        <div class="col" id="column-central">
+            <div id="column-central2">
+            {% block content %}{% endblock %}
+
+        {% if user.is_authenticated %}
+            <p></p>
+            <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+            <p>Вы можете <a href="{% url 'majorsite:logout' %}">Выйти</a></p>
+        {% else %}
+            <p></p>
+            <p>Welcome, new user. Please log in.</p>
+            <p><a href="/">Регистрация</a></p>
+            <p><a href="{% url 'majorsite:login' %}">Войти</a></p>
+        {% endif %}
+            </div>
+        </div>
+        <div class="col" id="column-right">
+            <div id="column-right2">
+                {% block content-right %}{% endblock %}
+            </div>
+        </div>
+        </div>
+    </div>
+
+</body>
+</html>
